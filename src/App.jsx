@@ -1,26 +1,26 @@
 import { useState } from 'react'
+import Hero from './components/Hero'
+import ItineraryForm from './components/ItineraryForm'
+import ItineraryResult from './components/ItineraryResult'
+import Assistant from './components/Assistant'
+import RouteShield from './components/RouteShield'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [result, setResult] = useState(null)
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
+    <div className="min-h-screen bg-gradient-to-b from-[#0b0220] via-[#0c0736] to-[#0b1c3f] text-white">
+      <Hero />
+
+      <section id="itinerary" className="relative z-10 container mx-auto px-6 -mt-24">
+        <ItineraryForm onResult={setResult} />
+        <ItineraryResult data={result} />
+        <RouteShield />
+        <Assistant />
+        <div className="mt-12 text-center text-white/60 text-sm">
+          Prices and AI responses are indicative. Connect your OpenAI key and provider APIs for production.
         </div>
-      </div>
+      </section>
     </div>
   )
 }
